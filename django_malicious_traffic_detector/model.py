@@ -30,7 +30,7 @@ class MaliciousTrafficModelProxy:
     @staticmethod
     def load_model():
         model_path = settings.DJANGO_MALICIOUS_TRAFFIC_DETECTOR['MODEL_PATH']
-        with open("model.pickle", "rb") as handle:
+        with open(model_path, "rb") as handle:
             model = pickle.load(handle)
         return model
 

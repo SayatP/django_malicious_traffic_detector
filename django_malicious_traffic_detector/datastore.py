@@ -7,7 +7,7 @@ class MalicilousTrafficDataStore:
     @staticmethod
     def get_number_of_requests_from_ip(ip):
         reqs = cache.get(ip) or []
-        return len(reqs)
+        return reqs
 
     @staticmethod
     def set_requests_from_ip(ip, data):

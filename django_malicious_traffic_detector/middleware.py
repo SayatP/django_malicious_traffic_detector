@@ -24,10 +24,11 @@ class MaliciousTrafficMiddleware:
         query_params = json.dumps(request.content_params)
         user_agent = request.headers["User-Agent"]
         ip = self.get_client_ip(request)
-        frequency = self.datastore.get_number_of_requests_from_ip(ip)
+        requests_from_ip = self.datastore.get_number_of_requests_from_ip(ip)
+        self.datastore.set_requests_from_ip(ip=ip, data=requests_from_ip)
 
         malicious_prediction = self.model.predict(
-            frequency=frequency,
+            frequency=len(requests_from_ip),
             user_agent=user_agent,
             query=query_params,
         )
