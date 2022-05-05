@@ -15,6 +15,6 @@ setup(
         "Django>=2.2",
         "numpy>=1.22.3",
         "setuptools>=57.4.0",
-        "scikit-learn>=1.0.2",
+        "scikit-learn>=1.1",
     ],
 )
