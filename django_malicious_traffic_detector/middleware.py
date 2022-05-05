@@ -10,13 +10,13 @@ from .model import MaliciousTrafficModelProxy
 class MaliciousTrafficMiddleware:
     def __init__(self, get_response):
 
-        settings = settings.DJANGO_MALICIOUS_TRAFFIC_DETECTOR
-        self.treshold = settings["TRESHOLD"]
+        mtm_settings = settings.DJANGO_MALICIOUS_TRAFFIC_DETECTOR
+        self.treshold = mtm_settings["TRESHOLD"]
         self.get_response = get_response
         self.datastore = MalicilousTrafficDataStore()
         self.model = MaliciousTrafficModelProxy(
-            user_agents_file=settings["USER_AGENTS_FILE"],
-            queries_file=settings["QUERIES_FILE"],
+            user_agents_file=mtm_settings["USER_AGENTS_FILE"],
+            queries_file=mtm_settings["QUERIES_FILE"],
         )
 
     def __call__(self, request):
